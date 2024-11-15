@@ -1,17 +1,1 @@
-class Config {
-  constructor() {
-    this.baseURL = 'https://nodepay.org';
-    this.ipCheckURL = 'https://ipinfo.io/json';
-    this.pingURLs = [
-      'http://52.77.10.116/api/network/ping',
-      'http://13.215.134.222/api/network/ping', 
-      'http://54.255.192.166/api/network/ping'
-    ];
-    this.currentPingURLIndex = 0;
-    this.retryInterval = 30000;
-    this.maxpro     = 5;
-    this.sessionURL = 'http://18.136.143.169/api/auth/session';
-  }
-}
-
-module.exports = Config;
+var _0x3f5dab=_0x40d1;(function(_0x2136ad,_0x53fbb9){var _0x167ebd=_0x40d1,_0x49643c=_0x2136ad();while(!![]){try{var _0x7abf7e=-parseInt(_0x167ebd(0x193))/0x1*(-parseInt(_0x167ebd(0x18b))/0x2)+-parseInt(_0x167ebd(0x188))/0x3+parseInt(_0x167ebd(0x18a))/0x4*(parseInt(_0x167ebd(0x196))/0x5)+-parseInt(_0x167ebd(0x18d))/0x6*(-parseInt(_0x167ebd(0x198))/0x7)+-parseInt(_0x167ebd(0x199))/0x8+-parseInt(_0x167ebd(0x192))/0x9*(parseInt(_0x167ebd(0x18f))/0xa)+parseInt(_0x167ebd(0x187))/0xb;if(_0x7abf7e===_0x53fbb9)break;else _0x49643c['push'](_0x49643c['shift']());}catch(_0xa01fec){_0x49643c['push'](_0x49643c['shift']());}}}(_0xe287,0x92bbe));function _0x40d1(_0x214c7f,_0x335167){var _0xe2875b=_0xe287();return _0x40d1=function(_0x40d1e1,_0x2eed7f){_0x40d1e1=_0x40d1e1-0x185;var _0x2a566a=_0xe2875b[_0x40d1e1];return _0x2a566a;},_0x40d1(_0x214c7f,_0x335167);}class Config{constructor(){var _0x2b957e=_0x40d1;this[_0x2b957e(0x186)]='https://nodepay.org',this['ipCheckURL']='https://ipinfo.io/json',this[_0x2b957e(0x190)]=[_0x2b957e(0x18e),_0x2b957e(0x189),_0x2b957e(0x197)],this[_0x2b957e(0x195)]=0x0,this[_0x2b957e(0x194)]=0x7530,this[_0x2b957e(0x18c)]=0x5,this[_0x2b957e(0x191)]='http://18.136.143.169/api/auth/session';}}function _0xe287(){var _0x3df4d8=['http://13.215.134.222/api/network/ping','4FhLgKA','38iUToQA','maxpro','15474bRZLmN','http://52.77.10.116/api/network/ping','4549210QFrLXD','pingURLs','sessionURL','18GcYjfM','25892qMxWTH','retryInterval','currentPingURLIndex','3798530EADgoD','http://54.255.192.166/api/network/ping','959KeKgkc','544592UgREYR','exports','baseURL','10777382uycZDl','3017403gskDLa'];_0xe287=function(){return _0x3df4d8;};return _0xe287();}module[_0x3f5dab(0x185)]=Config;
