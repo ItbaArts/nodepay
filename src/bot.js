@@ -22,6 +22,8 @@ class Bot {
     this.token = null;
     this.intervals = new Set();
     this.botId = Math.random().toString(36).substring(7);
+    this.pingFailCount = 0;
+    this.maxPingFails = 3;
   }
 
   getRandomInterval() {
@@ -140,6 +142,16 @@ class Bot {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  getCurrentPingURL() {
+    return this.config.pingURLs[this.config.currentPingURLIndex];
+  }
+
+  switchToNextPingURL() {
+    this.config.currentPingURLIndex = (this.config.currentPingURLIndex + 1) % this.config.pingURLs.length;
+    this.pingFailCount = 0;
+    console.log(`\n🔄 ${'Beralih ke ping URL:'.yellow} ${this.getCurrentPingURL()}`);
+  }
+
   async sendPing(accountInfo, token, userAgent, proxy) {
     const uid = accountInfo.uid || crypto.randomBytes(8).toString('hex');
     const browserId =
@@ -175,8 +187,9 @@ class Bot {
         config.proxy = this.buildProxyConfig(proxy);
       }
 
-      await axios.post(this.config.pingURL, pingData, config);
+      await axios.post(this.getCurrentPingURL(), pingData, config);
       this.pingCount++;
+      this.pingFailCount = 0;
       console.log(`📡 ${'Bot'.cyan} #${this.botId} ${'ping sent'.cyan} for UID: ${uid} (${this.pingCount}/${this.maxPingBeforeRest})`);
       
       if (this.pingCount >= this.maxPingBeforeRest) {
@@ -216,6 +229,14 @@ class Bot {
       }
 
     } catch (error) {
+      this.pingFailCount++;
+      console.log(`⚠️ Ping error (${this.pingFailCount}/${this.maxPingFails})`);
+
+      if (this.pingFailCount >= this.maxPingFails) {
+        this.switchToNextPingURL();
+        return this.sendPing(accountInfo, token, userAgent, proxy);
+      }
+
       this.handleProxyError();
       throw new Error('Ping request failed');
     }
